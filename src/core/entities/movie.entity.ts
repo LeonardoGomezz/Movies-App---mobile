@@ -21,3 +21,11 @@ export interface FullMovieSearch extends Movie {
   originalTitle: string
   voteAvergae: number
 }
+
+export interface Trailer {
+  name: string
+  trailerKey: string
+  site: string
+  type: string
+  trailerId: string
+}

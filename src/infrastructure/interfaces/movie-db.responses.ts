@@ -116,3 +116,39 @@ export interface SearchMovieByNameResponse {
   results:       Result[];
   total_results: number;
 }
+
+export interface MovieTrailerResponse {
+  id:      number;
+  results: TrailerResult[];
+}
+
+export interface TrailerResult {
+  iso_639_1:    ISO639_1;
+  iso_3166_1:   ISO3166_1;
+  name:         string;
+  key:          string;
+  site:         Site;
+  size:         number;
+  type:         Type;
+  official:     boolean;
+  published_at: Date;
+  id:           string;
+}
+
+export enum ISO3166_1 {
+  Es = 'ES',
+}
+
+export enum ISO639_1 {
+  Es = 'es',
+}
+
+export enum Site {
+  YouTube = 'YouTube',
+}
+
+export enum Type {
+  Featurette = 'Featurette',
+  Teaser = 'Teaser',
+  Trailer = 'Trailer',
+}
