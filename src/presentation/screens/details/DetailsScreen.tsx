@@ -13,9 +13,6 @@ export const DetailsScreen = ({ route }: Props) => {
   const { movieId } = route.params;
   const {isLoading ,movie, cast = [], oficialTrailer, similarMovies = []} = useMovie(movieId);
 
-  console.log('full movie => ', movie);
-  console.log('trailer => ', oficialTrailer);
-
    if ( isLoading ) {
       return <FullScreenLoader/>;
     }

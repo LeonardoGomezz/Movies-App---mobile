@@ -11,7 +11,6 @@ interface Props {
 
 export const SearchResult = ({result}: Props) => {
    const navigation = useNavigation<NavigationProp<RootStackParams>>();
-  console.log('result => ', result);
   return (
     <View>
       <Pressable
