@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 import { useMovies } from '../../hooks/useMovies';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,15 +8,24 @@ import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
 import { FullScreenLoader } from '../../components/loader/FullScreenLoader';
 import { SearchResult } from '../../components/movies/SearchResult';
 import Icon from '@react-native-vector-icons/ionicons';
-import { LoginButton } from '../../components/movies/LoginButton';
+import { useAuth0 } from 'react-native-auth0';
 
 export const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
+  const { clearSession } = useAuth0();
   const { isLoading, nowPlaying, popular, topRated, upcoming, movieName, setMovieName, searchResults, popularNextPage, topRatedNextPage, upcomingNextPage } = useMovies();
 
   if ( isLoading ) {
     return <FullScreenLoader/>;
   }
+
+  const onLogout = async () => {
+    try {
+      await clearSession();
+    } catch (error) {
+      console.log('Logout error: ', error);
+    }
+  };
   return (
     <>
       <View>
@@ -66,7 +75,9 @@ export const HomeScreen = () => {
         <HorizontalCarousel movies={upcoming} title="Próximamente" loadNextPage={upcomingNextPage} />
       </View>
     </ScrollView>
-    <LoginButton/>
+     <Pressable onPress={onLogout}>
+            <Text>LogoutButton</Text>
+          </Pressable>
     </>
   );
 };

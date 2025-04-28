@@ -1,22 +1,18 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { useAuth0 } from 'react-native-auth0';
+import { useAuth } from '../../hooks/useAuth';
 
 export const LoginButton = () => {
-  const {authorize} = useAuth0();
+  const {onLogin, onLogout} = useAuth();
 
-  const onPress = async () => {
-    try {
-        await authorize();
-    } catch (e) {
-        console.log(e);
-    }
-};
 
   return (
-    <View>
-      <Pressable onPress={onPress}>
-      <Text>LoginButton</Text>
+    <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'center', gap: 30 }}>
+      <Pressable onPress={onLogin}>
+        <Text>LoginButton</Text>
+      </Pressable>
+      <Pressable onPress={onLogout}>
+        <Text>LogoutButton</Text>
       </Pressable>
     </View>
   );
