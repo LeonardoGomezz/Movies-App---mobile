@@ -8,6 +8,7 @@ import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
 import { FullScreenLoader } from '../../components/loader/FullScreenLoader';
 import { SearchResult } from '../../components/movies/SearchResult';
 import Icon from '@react-native-vector-icons/ionicons';
+import { LoginButton } from '../../components/movies/LoginButton';
 
 export const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -65,6 +66,7 @@ export const HomeScreen = () => {
         <HorizontalCarousel movies={upcoming} title="Próximamente" loadNextPage={upcomingNextPage} />
       </View>
     </ScrollView>
+    <LoginButton/>
     </>
   );
 };
