@@ -19,5 +19,9 @@ export const App = () => {
 const RootNavigator = () => {
   const { loggedIn } = useAuth();
 
-  return loggedIn ? <Navigation /> : <AuthScreen />;
+  return (
+    <>
+    {loggedIn ? <Navigation /> : <AuthScreen />}
+    </>
+  );
 };
