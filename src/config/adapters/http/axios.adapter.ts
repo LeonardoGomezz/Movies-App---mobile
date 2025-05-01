@@ -16,11 +16,15 @@ export class AxiosAdapter implements HttpAdapter {
       params: options.params,
     });
   }
+
+
+
   async get<T>(url: string, options?: Record<string, unknown> | undefined): Promise<T> {
     try {
       const { data } = await this.axiosInstance.get<T>(url, options);
       return data;
     } catch (error) {
+      console.error('Error details:', error);
       throw new Error(`Error fetching get: ${url}`);
     }
   }
